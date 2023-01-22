@@ -82,23 +82,24 @@
             </tr>
             </thead>
             <tbody>
+            <th:block th:each="flight : ${flightList}">
             <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
-                <td>Mark</td>
+                <td>[[${flight.fl_date}]]</td>
+                <td>[[${flight.origin}]]</td>
+                <td>[[${flight.dest}]]</td>
+                <td>[[${flight.air_time}]]</td>
+                <td>[[${flight.arr_delay}]]</td>
+                <td>[[${flight.arr_time}]]</td>
+                <td>[[${flight.dep_delay}]]</td>
+                <td>[[${flight.dep_time}]]</td>
+                <td>[[${flight.distance}]]</td>
+                <td>[[${flight.op_carrier_fl_num}]]</td>
+                <td>[[${flight.op_unique_carrier}]]</td>
+                <td>[[${flight.taxi_in}]]</td>
+                <td>[[${flight.taxi_out}]]</td>
+                <td>[[${flight.wheels_off}]]</td>
+                <td>[[${flight.wheels_on}]]</td>
             </tr>
             </tbody>
         </table>
