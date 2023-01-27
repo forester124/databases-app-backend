@@ -19,4 +19,9 @@ public class MainController {
         model.addAttribute("flightList", flightList);
         return "index";
     }
+
+    @GetMapping("/new")
+    public String showNewFlightForm(Model model) {
+        return "newFlightForm";
+    }
 }
