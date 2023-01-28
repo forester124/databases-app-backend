@@ -34,12 +34,13 @@ public class MainController {
     public String showEditForm(Model model, @PathVariable("date") Date date,
                                @PathVariable("dest") String dest, @PathVariable("origin") String origin) {
         MyId id = new MyId(date, origin, dest);
+        System.out.println(id);
         Flight flight = service.getById(id);
         model.addAttribute("flight", flight);
         return "newFlightForm";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/save")
     public String addFlight(Flight flight) {
         service.save(flight);
         return "redirect:";

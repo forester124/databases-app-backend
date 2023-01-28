@@ -22,6 +22,8 @@
         <label class="btn btn-outline-dark" for="cassa">Third Option</label>
     </div>
 
+
+
     <div style="margin-top: 30px;">
         <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample">
@@ -59,7 +61,8 @@
             </form>
         </div>
     </div>
-    <div class="table-responsive" style="margin-top: 30px;">
+    <a class="btn btn-dark" th:href="@{/new}" style="margin-top: 20px;">Add New Flight</a>
+    <div class="table-responsive" style="margin-top: 20px;">
         <table class="table table-striped table-dark">
             <thead>
             <tr>
@@ -102,8 +105,8 @@
                 <td>[[${flight.wheels_off}]]</td>
                 <td>[[${flight.wheels_on}]]</td>
                 <td>
-                    <a class="btn btn-dark" th:href="@{'/edit/' + ${flight.fl_date} + '&' + ${flight.origin} + '&' + ${flight.dest}}">Edit</a>
-                    <a class="btn btn-dark" th:href="@{'/delete/' + ${flight.fl_date} + '&' + ${flight.origin} + '&' + ${flight.dest}}">Delete</a>
+                    <a class="btn btn-light m-2" th:href="@{'/edit/' + ${flight.fl_date} + '&' + ${flight.origin} + '&' + ${flight.dest}}">Edit</a>
+                    <a class="btn btn-light m-2" th:href="@{'/delete/' + ${flight.fl_date} + '&' + ${flight.origin} + '&' + ${flight.dest}}">Delete</a>
                 </td>
             </tr>
             </tbody>

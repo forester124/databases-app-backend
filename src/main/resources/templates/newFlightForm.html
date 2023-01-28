@@ -9,7 +9,7 @@
 <body>
 <div class="container text-center">
     <div class="border border-secondary rounded p-3" style="margin-top: 50px;">
-        <form class="row g-3" th:action="@{/new}" method="post" th:object="${flight}">
+        <form class="row g-3" th:action="@{/save}" method="post" th:object="${flight}">
             <div class="col-md-2">
                 <label for="fl_date" class="form-label">Flight date</label>
                 <input type="date" class="form-control" id="fl_date" th:field="*{fl_date}">
@@ -71,10 +71,16 @@
                 <input type="number" class="form-control" id="arr_delay" th:field="*{arr_delay}">
             </div>
             <div class="col-md-12">
-                <button type="submit" class="btn btn-dark">Add</button>
+                <button type="submit" class="btn btn-dark m-2">Add</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
             </div>
         </form>
     </div>
 </div>
+<script>
+    function cancelForm() {
+        window.location = "/";
+    }
+</script>
 </body>
 </html>

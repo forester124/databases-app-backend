@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +22,8 @@ public class FlightService {
     }
 
     public Flight getById(MyId id) {
-        Optional<Flight> flight = repo.findById(id);
-        Flight f = flight.get();
-        return f;
+        Flight flight = repo.getById(id.getFl_date(), id.getOrigin(), id.getDest());
+        return flight;
     }
 
     public void delete(Flight flight) {

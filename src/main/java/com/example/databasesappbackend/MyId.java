@@ -39,4 +39,13 @@ public class MyId implements Serializable {
     public void setDest(String dest) {
         this.dest = dest;
     }
+
+    @Override
+    public String toString() {
+        return "MyId{" +
+                "fl_date=" + fl_date +
+                ", origin='" + origin + '\'' +
+                ", dest='" + dest + '\'' +
+                '}';
+    }
 }
