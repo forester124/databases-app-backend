@@ -79,6 +79,7 @@
                 <th scope="col">taxi_out</th>
                 <th scope="col">wheels_off</th>
                 <th scope="col">wheels_on</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -100,6 +101,10 @@
                 <td>[[${flight.taxi_out}]]</td>
                 <td>[[${flight.wheels_off}]]</td>
                 <td>[[${flight.wheels_on}]]</td>
+                <td>
+                    <a class="btn btn-dark" th:href="@{'/edit/' + ${flight.fl_date} + '&' + ${flight.origin} + '&' + ${flight.dest}}">Edit</a>
+                    <a class="btn btn-dark" th:href="@{'/delete/' + ${flight.fl_date} + '&' + ${flight.origin} + '&' + ${flight.dest}}">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 
-public interface FlightRepository extends CrudRepository<Flight, Date> {
+public interface FlightRepository extends CrudRepository<Flight, MyId> {
 }
