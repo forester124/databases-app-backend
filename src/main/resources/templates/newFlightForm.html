@@ -9,72 +9,78 @@
 <body>
 <div class="container text-center">
     <div class="border border-secondary rounded p-3" style="margin-top: 50px;">
-        <form class="row g-3">
+        <form class="row g-3" th:action="@{/save}" method="post" th:object="${flight}">
             <div class="col-md-2">
                 <label for="fl_date" class="form-label">Flight date</label>
-                <input type="text" class="form-control" id="fl_date">
+                <input type="date" class="form-control" id="fl_date" th:field="*{fl_date}">
             </div>
             <div class="col-md-2">
                 <label for="origin" class="form-label">Origin</label>
-                <input type="text" class="form-control" id="origin">
+                <input type="text" class="form-control" id="origin" th:field="*{origin}">
             </div>
             <div class="col-md-2">
                 <label for="dest" class="form-label">Destination</label>
-                <input type="text" class="form-control" id="dest">
+                <input type="text" class="form-control" id="dest" th:field="*{dest}">
             </div>
             <div class="col-md-2">
                 <label for="air_time" class="form-label">Air time</label>
-                <input type="number" class="form-control" id="air_time">
+                <input type="number" class="form-control" id="air_time" th:field="*{air_time}">
             </div>
             <div class="col-md-2">
                 <label for="arr_time" class="form-label">Arrival time</label>
-                <input type="number" class="form-control" id="arr_time">
+                <input type="number" class="form-control" id="arr_time" th:field="*{arr_time}">
             </div>
             <div class="col-md-2">
                 <label for="dep_delay" class="form-label">dep_delay</label>
-                <input type="number" class="form-control" id="dep_delay">
+                <input type="number" class="form-control" id="dep_delay" th:field="*{dep_delay}">
             </div>
             <div class="col-md-2">
                 <label for="distance" class="form-label">distance</label>
-                <input type="number" class="form-control" id="distance">
+                <input type="number" class="form-control" id="distance" th:field="*{distance}">
             </div>
             <div class="col-md-2">
                 <label for="op_carrier_fl_num" class="form-label">op_carrier_fl_num</label>
-                <input type="number" class="form-control" id="op_carrier_fl_num">
+                <input type="number" class="form-control" id="op_carrier_fl_num" th:field="*{op_carrier_fl_num}">
             </div>
             <div class="col-md-2">
                 <label for="op_unique_carrier" class="form-label">op_unique_carrier</label>
-                <input type="number" class="form-control" id="op_unique_carrier">
+                <input type="number" class="form-control" id="op_unique_carrier" th:field="*{op_unique_carrier}">
             </div>
             <div class="col-md-2">
                 <label for="taxi_in" class="form-label">taxi_in</label>
-                <input type="number" class="form-control" id="taxi_in">
+                <input type="number" class="form-control" id="taxi_in" th:field="*{taxi_in}">
             </div>
             <div class="col-md-2">
                 <label for="wheels_off" class="form-label">wheels_off</label>
-                <input type="number" class="form-control" id="wheels_off">
+                <input type="number" class="form-control" id="wheels_off" th:field="*{wheels_off}">
             </div>
             <div class="col-md-2">
                 <label for="taxi_out" class="form-label">taxi_out</label>
-                <input type="number" class="form-control" id="taxi_out">
+                <input type="number" class="form-control" id="taxi_out" th:field="*{taxi_out}">
             </div>
             <div class="col-md-2">
                 <label for="wheels_on" class="form-label">wheels_on</label>
-                <input type="number" class="form-control" id="wheels_on">
+                <input type="number" class="form-control" id="wheels_on" th:field="*{wheels_on}">
             </div>
             <div class="col-md-2">
                 <label for="dep_time" class="form-label">dep_time</label>
-                <input type="number" class="form-control" id="dep_time">
+                <input type="number" class="form-control" id="dep_time" th:field="*{dep_time}">
             </div>
             <div class="col-md-2">
                 <label for="arr_delay" class="form-label">Arrival delay</label>
-                <input type="number" class="form-control" id="arr_delay">
+                <input type="number" class="form-control" id="arr_delay" th:field="*{arr_delay}">
             </div>
             <div class="col-md-12">
-                <button type="submit" class="btn btn-dark">Add</button>
+                <button type="submit" class="btn btn-dark m-2">Add</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
             </div>
         </form>
     </div>
 </div>
+<script>
+    function cancelForm() {
+        window.location = "/";
+    }
+</script>
 </body>
 </html>

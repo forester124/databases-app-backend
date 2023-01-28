@@ -1,14 +1,12 @@
 package com.example.databasesappbackend;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 
 @Entity
 @Table(name="arrival_data")
+@IdClass(MyId.class)
 public class Flight {
 
     @Id
@@ -21,9 +19,11 @@ public class Flight {
     @Column(name = "OP_CARRIER_FL_NUM")
     private int op_carrier_fl_num;
 
+    @Id
     @Column(name = "ORIGIN")
     private String origin;
 
+    @Id
     @Column(name = "DEST")
     private String dest;
 
