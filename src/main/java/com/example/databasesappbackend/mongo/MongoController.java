@@ -30,7 +30,7 @@ public class MongoController {
     @GetMapping("/mongo/new")
     public String showNewFlightForm(Model model) {
         model.addAttribute("flight", new FlightMongo());
-        return "newFlightForm";
+        return "newForm";
     }
 
     @GetMapping("/mongo/edit/{date}&{dest}&{origin}")
@@ -39,13 +39,13 @@ public class MongoController {
         FlightKeyMongo id = new FlightKeyMongo(dest, origin, date);
         FlightMongo flight = service.getById(id);
         model.addAttribute("flight", flight);
-        return "newFlightForm";
+        return "newForm";
     }
 
     @PostMapping("/mongo/save")
     public String addFlight(FlightMongo flight) {
         service.save(flight);
-        return "redirect:";
+        return "redirect:/mongo";
     }
 
     @DeleteMapping("/mongo/delete/{date}&{dest}&{origin}")

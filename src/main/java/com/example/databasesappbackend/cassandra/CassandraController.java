@@ -1,7 +1,6 @@
 package com.example.databasesappbackend.cassandra;
 
 
-import com.example.databasesappbackend.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +28,7 @@ public class CassandraController {
     @GetMapping("/cass/new")
     public String showNewFlightForm(Model model) {
         model.addAttribute("flight", new FlightCass());
-        return "newFlightForm";
+        return "newForm";
     }
 
     @GetMapping("/cass/edit/{date}&{dest}&{origin}")
@@ -39,13 +38,13 @@ public class CassandraController {
         System.out.println(id);
         FlightCass flight = service.findFlightByFlightKey(id);
         model.addAttribute("flight", flight);
-        return "newFlightForm";
+        return "newForm";
     }
 
     @PostMapping("/cass/save")
     public String addFlight(FlightCass flight) {
         service.save(flight);
-        return "redirect:";
+        return "redirect:/cass";
     }
 
     @DeleteMapping("/cass/delete/{date}&{dest}&{origin}")
