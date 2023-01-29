@@ -1,4 +1,4 @@
-package com.example.databasesappbackend;
+package com.example.databasesappbackend.mysql;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

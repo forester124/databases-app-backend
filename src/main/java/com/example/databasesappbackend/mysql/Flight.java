@@ -1,4 +1,6 @@
-package com.example.databasesappbackend;
+package com.example.databasesappbackend.mysql;
+
+import com.example.databasesappbackend.mysql.MyId;
 
 import javax.persistence.*;
 import java.sql.Date;
