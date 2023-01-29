@@ -22,8 +22,7 @@ public class FlightService {
     }
 
     public Flight getById(MyId id) {
-        Flight flight = repo.getById(id.getFl_date(), id.getOrigin(), id.getDest());
-        return flight;
+        return repo.getById(id.getFl_date(), id.getOrigin(), id.getDest());
     }
 
     public void delete(Flight flight) {

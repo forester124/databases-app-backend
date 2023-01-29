@@ -3,14 +3,13 @@ package com.example.databasesappbackend.mongo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Column;
 import java.sql.Date;
 
 
-@Document
+@Document(collection = "test")
 public class FlightMongo {
     @Id
-    private FlightKeyMondo id;
+    private FlightKeyMongo id;
 
     //@Column(name = "fl_date")
     private Date fl_date;
@@ -57,11 +56,11 @@ public class FlightMongo {
   //  @Column(name = "DISTANCE")
     private int distance;
 
-    public FlightKeyMondo getId() {
+    public FlightKeyMongo getId() {
         return id;
     }
 
-    public void setId(FlightKeyMondo id) {
+    public void setId(FlightKeyMongo id) {
         this.id = id;
     }
 
@@ -183,5 +182,9 @@ public class FlightMongo {
 
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    public FlightMongo() {
+
     }
 }

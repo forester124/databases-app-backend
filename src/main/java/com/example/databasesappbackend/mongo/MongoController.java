@@ -1,7 +1,8 @@
-package com.example.databasesappbackend.cassandra;
+package com.example.databasesappbackend.mongo;
 
-
-import com.example.databasesappbackend.Flight;
+import com.example.databasesappbackend.cassandra.FlightCass;
+import com.example.databasesappbackend.cassandra.FlightKey;
+import com.example.databasesappbackend.cassandra.FlightRepositoryCass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,44 +15,43 @@ import java.sql.Date;
 import java.util.List;
 
 @Controller
-public class CassandraController {
+public class MongoController {
 
     @Autowired
-    private FlightRepositoryCass service;
+    private FlightServiceMongo service;
 
-    @GetMapping("/cass")
+    @GetMapping("/mongo")
     public String homePage(Model model) {
-        List<FlightCass> flightList = service.findAll();
+        List<FlightMongo> flightList = service.getAll();
         model.addAttribute("flightList", flightList);
         return "index";
     }
 
-    @GetMapping("/cass/new")
+    @GetMapping("/mongo/new")
     public String showNewFlightForm(Model model) {
-        model.addAttribute("flight", new FlightCass());
+        model.addAttribute("flight", new FlightMongo());
         return "newFlightForm";
     }
 
-    @GetMapping("/cass/edit/{date}&{dest}&{origin}")
+    @GetMapping("/mongo/edit/{date}&{dest}&{origin}")
     public String showEditForm(Model model, @PathVariable("date") Date date,
                                @PathVariable("dest") String dest, @PathVariable("origin") String origin) {
-        FlightKey id = new FlightKey(dest, origin, date);
-        System.out.println(id);
-        FlightCass flight = service.findFlightByFlightKey(id);
+        FlightKeyMongo id = new FlightKeyMongo(dest, origin, date);
+        FlightMongo flight = service.getById(id);
         model.addAttribute("flight", flight);
         return "newFlightForm";
     }
 
-    @PostMapping("/cass/save")
-    public String addFlight(FlightCass flight) {
+    @PostMapping("/mongo/save")
+    public String addFlight(FlightMongo flight) {
         service.save(flight);
         return "redirect:";
     }
 
-    @DeleteMapping("/cass/delete/{date}&{dest}&{origin}")
+    @DeleteMapping("/mongo/delete/{date}&{dest}&{origin}")
     public String delete(@PathVariable("date") Date date, @PathVariable("dest") String dest, @PathVariable("origin") String origin) {
-        FlightKey id = new FlightKey(dest, origin, date);
-        FlightCass flight = service.findFlightByFlightKey(id);
+        FlightKeyMongo id = new FlightKeyMongo(dest, origin, date);
+        FlightMongo flight = service.getById(id);
         service.delete(flight);
         return "index";
     }

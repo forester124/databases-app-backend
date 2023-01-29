@@ -11,7 +11,7 @@ import java.util.Objects;
 public class FlightKey implements Serializable {
 
     @PrimaryKeyColumn(name = "DEST")
-    private String destination;
+    private String dest;
 
     @PrimaryKeyColumn(name = "ORIGIN")
     private String origin;
@@ -19,12 +19,12 @@ public class FlightKey implements Serializable {
     @PrimaryKeyColumn(name = "FL_DATE")
     private Date fl_date;
 
-    public String getDestination() {
-        return destination;
+    public String getDest() {
+        return dest;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setDest(String dest) {
+        this.dest = dest;
     }
 
     public String getOrigin() {
@@ -44,15 +44,21 @@ public class FlightKey implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FlightKey flightKey = (FlightKey) o;
-        return destination.equals(flightKey.destination) && origin.equals(flightKey.origin) && fl_date.equals(flightKey.fl_date);
+        return dest.equals(flightKey.dest) && origin.equals(flightKey.origin) && fl_date.equals(flightKey.fl_date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(destination, origin, fl_date);
+        return Objects.hash(dest, origin, fl_date);
     }
 
     public void setFl_date(Date fl_date) {
+        this.fl_date = fl_date;
+    }
+
+    public FlightKey(String dest, String origin, Date fl_date) {
+        this.dest = dest;
+        this.origin = origin;
         this.fl_date = fl_date;
     }
 }

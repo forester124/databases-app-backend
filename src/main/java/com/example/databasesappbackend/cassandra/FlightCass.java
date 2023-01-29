@@ -9,7 +9,7 @@ import java.sql.Date;
 
 
 @Table(value="arrival_data")
-public class Flight {
+public class FlightCass {
 
     @PrimaryKey
     private FlightKey pk;
