@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
 
     @Autowired
     private FlightService service;
+
 
     @GetMapping("")
     public String homePage(Model model) {
@@ -26,23 +28,15 @@ public class MainController {
     public String showNewFlightForm(Model model) {
         model.addAttribute("flight", new Flight());
         System.out.println("GET new form");
-        return "newFlightForm";
+        return "newForm";
     }
 
-    @GetMapping("/edit/{date}&{dest}&{origin}")
-    public String showEditForm(Model model, @ModelAttribute Flight flight, BindingResult bindingResult, @PathVariable("date") Date date,
-                               @PathVariable("dest") String dest, @PathVariable("origin") String origin) {
+    @GetMapping("/edit/{date}&{origin}&{dest}")
+    public String showEdit(Model model, @PathVariable("date") Date date, @PathVariable("origin") String origin, @PathVariable("dest") String dest) {
         MyId id = new MyId(date, origin, dest);
-        System.out.println(id);
         Flight f = service.getById(id);
         model.addAttribute("flight", f);
-        System.out.println("GET edit form");
-        if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
-            System.out.println("Flight is: " + flight.getFl_date());
-            return "index";
-        }
-        return "newFlightForm";
+        return "newForm";
     }
 
     @PostMapping("/save")
@@ -52,14 +46,14 @@ public class MainController {
         return "redirect:";
     }
 
-    @DeleteMapping("/delete/{date}&{dest}&{origin}")
-    public String delete(@PathVariable("date") Date date, @PathVariable("dest") String dest, @PathVariable("origin") String origin) {
+    @GetMapping("/delete/{date}&{origin}&{dest}")
+    public String delete(@PathVariable("date") Date date, @PathVariable("origin") String origin, @PathVariable("dest") String dest) {
         System.out.println("DELETE flight");
         MyId id = new MyId(date, origin, dest);
         Flight flight = service.getById(id);
+        System.out.println(flight);
         service.delete(flight);
-        return "index";
+        return "redirect:/";
     }
 
-    @GetMapping
 }
