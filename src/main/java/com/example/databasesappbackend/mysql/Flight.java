@@ -1,4 +1,6 @@
-package com.example.databasesappbackend;
+package com.example.databasesappbackend.mysql;
+
+import com.example.databasesappbackend.mysql.MyId;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -175,5 +177,26 @@ public class Flight {
 
     public void setDistance(int DISTANCE) {
         this.distance = DISTANCE;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "fl_date=" + fl_date +
+                ", op_unique_carrier='" + op_unique_carrier + '\'' +
+                ", op_carrier_fl_num=" + op_carrier_fl_num +
+                ", origin='" + origin + '\'' +
+                ", dest='" + dest + '\'' +
+                ", dep_time=" + dep_time +
+                ", dep_delay=" + dep_delay +
+                ", taxi_out=" + taxi_out +
+                ", wheels_off=" + wheels_off +
+                ", wheels_on=" + wheels_on +
+                ", taxi_in=" + taxi_in +
+                ", arr_time=" + arr_time +
+                ", arr_delay=" + arr_delay +
+                ", air_time=" + air_time +
+                ", distance=" + distance +
+                '}';
     }
 }
