@@ -18,6 +18,7 @@ public class MainController {
     @GetMapping("")
     public String homePage(Model model) {
         List<Flight> flightList = service.getAll();
+        flightList = flightList.subList(0, 100);
         model.addAttribute("flightList", flightList);
         return "index";
     }

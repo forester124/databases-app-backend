@@ -10,15 +10,15 @@
 <div class="container text-center">
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-top: 30px;">
         <input type="radio" class="btn-check" name="database" id="mysql"
-               value="mysql" autocomplete="off" checked>
+               value="mysql" autocomplete="off" checked onchange="onChangeHandler('mysql')">
         <label class="btn btn-outline-dark" for="mysql">MySQL</label>
 
         <input type="radio" class="btn-check" name="database" id="mongo"
-               value="mongo" autocomplete="off">
+               value="mongo" autocomplete="off" checked onchange="onChangeHandler('mongo')">
         <label class="btn btn-outline-dark" for="mongo">MongoDB</label>
 
         <input type="radio" class="btn-check" name="database" id="cassa"
-               value="cassa" autocomplete="off">
+               value="cassa" autocomplete="off" checked onchange="onChangeHandler('cassa')">
         <label class="btn btn-outline-dark" for="cassa">Cassandra</label>
     </div>
 
@@ -115,5 +115,25 @@
         </table>
     </div>
 </div>
+<script>
+    if (this.window.location.pathname === '/') {
+        document.getElementById("mysql").checked = true;
+    } else if (this.window.location.pathname === '/mongo') {
+        document.getElementById("mongo").checked = true;
+    } else if (this.window.location.pathname === '/cass') {
+        document.getElementById("cassa").checked = true;
+    }
+
+
+    function onChangeHandler(val) {
+        if (val === 'mysql') {
+            this.window.location = '/';
+        } else if (val === 'mongo') {
+            this.window.location = '/mongo';
+        } else if (val === 'cassa') {
+            this.window.location = '/cass';
+        }
+    }
+</script>
 </body>
 </html>
